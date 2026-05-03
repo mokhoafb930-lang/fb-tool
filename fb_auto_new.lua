@@ -20,7 +20,7 @@ function kiemTraCapNhat()
     if not httpGet then return end
     
     local success, content = pcall(function()
-        return httpGet(URL_CHECK_VERSION)
+        return httpGet(URL_CHECK_VERSION .. "?t=" .. os.time())
     end)
     
     if success and content then
