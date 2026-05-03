@@ -39,9 +39,10 @@ function kiemTraCapNhat()
                 if f then
                     f:write(newCode)
                     f:close()
-                    toast("✅ Đã cập nhật lên bản " .. versionMoi .. "! Đang tải lại tool...")
+                    toast("✅ Đã cập nhật lên bản " .. versionMoi .. "! Đang mở tool...", 3)
                     sleep(2)
-                    if stop then stop() elseif luaExit then luaExit() end
+                    dofile(pathFile)
+                    return
                 end
             else
                 toast("❌ Tải file thất bại hoặc file quá nhỏ!", 3)
