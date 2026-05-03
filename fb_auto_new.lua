@@ -12,11 +12,11 @@
 local unpack = unpack or table.unpack
 
 -- ========== CẤU HÌNH AUTO-UPDATE ==========
-local VERSION_HIEN_TAI = 1.0  -- Phiên bản hiện tại trên máy khách
-local URL_CHECK_VERSION = "https://yourserver.com/version.txt"  -- Link check version mới nhất
-local URL_DOWNLOAD_CODE = "https://yourserver.com/fb_auto_new.lua"  -- Link tải code mới nhất
+VERSION_HIEN_TAI = 1.1  -- Phiên bản hiện tại trên máy khách
+URL_CHECK_VERSION = "https://raw.githubusercontent.com/mokhoafb930-lang/fb-tool/refs/heads/main/version.txt"  -- Link check version mới nhất
+URL_DOWNLOAD_CODE = "https://raw.githubusercontent.com/mokhoafb930-lang/fb-tool/refs/heads/main/fb_auto_new.lua"  -- Link tải code mới nhất
 
-local function kiemTraCapNhat()
+function kiemTraCapNhat()
     if not httpGet then return end
     
     local success, content = pcall(function()
