@@ -29,10 +29,11 @@ function kiemTraCapNhat()
             toast("🆕 Phát hiện bản mới: " .. versionMoi .. "! Đang tải...", 3)
             
             local dl_success, newCode = pcall(function()
-                return httpGet(URL_DOWNLOAD_CODE)
+                return httpGet(URL_DOWNLOAD_CODE .. "?t=" .. os.time())
             end)
             
             if dl_success and newCode and #newCode > 100 then
+                toast("💾 Đang ghi file mới vào máy...")
                 local pathFile = "/var/mobile/Documents/fb_auto_new.lua"
                 local f = io.open(pathFile, "w")
                 if f then
@@ -42,6 +43,9 @@ function kiemTraCapNhat()
                     sleep(2)
                     if stop then stop() elseif luaExit then luaExit() end
                 end
+            else
+                toast("❌ Tải file thất bại hoặc file quá nhỏ!", 3)
+                log("❌ Tải file thất bại hoặc file quá nhỏ! Độ dài: " .. tostring(newCode and #newCode or 0))
             end
         end
     end
